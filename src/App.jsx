@@ -1,23 +1,31 @@
-import styled from "styled-components";
-import GlobalyStyles from "./styles/GlobalStyled";
-import Button from "./ui/Button";
-
-const H1 = styled.h1`
-  font-size: 2 rem;
-  color: white;
-`;
-const StyledApp = styled.main`
-  background-color: orangered;
-  padding: 20px;
-`;
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Bookings from "./pages/Bookings";
+import Cabins from "./pages/Cabins";
+import Users from "./pages/Users";
+import Account from "./pages/Account";
+import Login from "./pages/Login";
+import PageNotFound from "./pages/PageNotFound";
+import GlobalStyled from "./styles/GlobalStyled";
+import AppLayout from "./ui/AppLayout";
 function App() {
   return (
     <>
-      <GlobalyStyles />
-      <StyledApp>
-        <H1>Styled Components</H1>
-        <Button>Click me</Button>
-      </StyledApp>
+      <GlobalStyled />
+      <BrowserRouter>
+        <Routes>
+          <Route element={<AppLayout />}>
+            <Route index element={<Navigate to={"dashboard"} replace />} />
+            <Route index path="dashboard" element={<Dashboard />} />
+            <Route path="bookings" element={<Bookings />} />
+            <Route path="cabins" element={<Cabins />} />
+            <Route path="users" element={<Users />} />
+            <Route path="account" element={<Account />} />
+          </Route>
+          <Route path="login" element={<Login />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
