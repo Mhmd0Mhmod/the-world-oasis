@@ -24,9 +24,11 @@ function CreateCabinForm() {
       toast.error(err.message);
     },
   });
+
   function onSubmit(data) {
-    mutate({ ...data, image: data.image.at(0) });
+    mutate({ ...data, image: data.image[0] });
   }
+
   // function onError(errors) {
   //   console.log(errors);
   // }
@@ -85,10 +87,7 @@ function CreateCabinForm() {
         />
       </FormRow>
 
-      <FormRow
-        label={"Description for website "}
-        error={errors?.description?.message}
-      >
+      <FormRow label={"Description for website "} error={errors?.description?.message}>
         <Textarea
           type="number"
           id="description"
@@ -111,7 +110,6 @@ function CreateCabinForm() {
       </FormRow>
 
       <FormRow>
-        {/* type is an HTML attribute! */}
         <Button variation="secondary" type="reset">
           Cancel
         </Button>
