@@ -78,34 +78,32 @@ function CabinRow({ cabin }) {
           <span>&mdash;</span>
         )}
         <div className="">
+          <button onClick={handleDuplicate} disabled={isCreating}>
+            <HiSquare2Stack />
+          </button>
           <Modal>
-            <Menus.Menu>
-              <Menus.Toggle id={cabin.id} />
-              <Menus.List id={cabin.id}>
-                <Menus.Button
-                  icon={<HiSquare2Stack />}
-                  onClick={handleDuplicate}
-                >
-                  Duplicate
-                </Menus.Button>
-                <Modal.Open opens={"editCabin"}>
-                  <Menus.Button icon={<HiPencil />}>Edit</Menus.Button>
-                </Modal.Open>
-                <Modal.Open opens={"deleteCabin"}>
-                  <Menus.Button icon={<HiTrash />}>Delete</Menus.Button>
-                </Modal.Open>
-              </Menus.List>
-              <Modal.Window name={"editCabin"}>
-                <CreateCabinForm cabinToEdit={cabin} />
-              </Modal.Window>
-              <Modal.Window name={"deleteCabin"}>
-                <ConfirmDelete
-                  resourceName={"Cabins"}
-                  disabled={isDeleting}
-                  onConfirm={() => deleteCabin(cabin.id)}
-                />
-              </Modal.Window>
-            </Menus.Menu>
+            <Modal.Open opens={"editCabin"}>
+              <button>
+                <HiPencil />
+              </button>
+            </Modal.Open>
+            <Modal.Window name={"editCabin"}>
+              <CreateCabinForm cabinToEdit={cabin} />
+            </Modal.Window>
+          </Modal>
+          <Modal>
+            <Modal.Open opens={"deleteCabin"}>
+              <button>
+                <HiTrash />
+              </button>
+            </Modal.Open>
+            <Modal.Window name={"deleteCabin"}>
+              <ConfirmDelete
+                resourceName={"Cabins"}
+                disabled={isDeleting}
+                onConfirm={() => deleteCabin(cabin.id)}
+              />
+            </Modal.Window>
           </Modal>
         </div>
       </Table.Row>
