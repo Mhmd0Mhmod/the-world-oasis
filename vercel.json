@@ -1,15 +1,20 @@
 {
-  "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "next.config.js",
-      "use": "@vercel/next"
+      "source": "/(.*)",
+      "destination": "/"
     }
   ],
-  "routes": [
+  "redirects": [
     {
-      "src": "/(.*)",
-      "dest": "/"
+      "source": "/old-route",
+      "destination": "/new-route",
+      "permanent": true
+    },
+    {
+      "source": "/another-old-route",
+      "destination": "/another-new-route",
+      "permanent": false
     }
   ]
 }
