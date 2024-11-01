@@ -24,7 +24,6 @@ export async function getBookings({ filter, sortBy, page }) {
     query = query.range(from, to);
   }
   const { data, error, count } = await query;
-  console.log(data, error, count);
 
   if (error) {
     console.error(error);
