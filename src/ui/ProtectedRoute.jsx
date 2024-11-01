@@ -14,6 +14,7 @@ const FullPage = styled.div`
 function ProtectedRoute({ children }) {
   const navigate = useNavigate();
   const { user, isLoading, isAuthenticated } = useUser();
+  console.log(user, isLoading, isAuthenticated);
 
   useEffect(
     function () {
@@ -27,7 +28,7 @@ function ProtectedRoute({ children }) {
         <Spinner />
       </FullPage>
     );
-  return children;
+  else return children;
 }
 
 export default ProtectedRoute;
