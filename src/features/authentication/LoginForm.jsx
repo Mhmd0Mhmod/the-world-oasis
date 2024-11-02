@@ -7,8 +7,8 @@ import { useLogin } from "./useLogin.js";
 import SpinnerMini from "../../ui/SpinnerMini.jsx";
 
 function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("ozo@example.com");
+  const [password, setPassword] = useState("11223344");
   const { login, isLoading } = useLogin();
   function handleSubmit(e) {
     e.preventDefault();
@@ -35,7 +35,7 @@ function LoginForm() {
           // This makes this form better for password managers
           autoComplete="username"
           value={email}
-          disabled={isLoading}
+          disabled={true}
           onChange={(e) => setEmail(e.target.value)}
         />
       </FormRowVertical>
@@ -45,7 +45,7 @@ function LoginForm() {
           id="password"
           autoComplete="current-password"
           value={password}
-          disabled={isLoading}
+          disabled={true}
           onChange={(e) => setPassword(e.target.value)}
         />
       </FormRowVertical>
