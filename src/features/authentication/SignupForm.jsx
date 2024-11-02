@@ -24,10 +24,10 @@ function SignupForm() {
       <FormRow label="Full name" error={errors?.fullName?.message}>
         <Input
           type="text"
+          disabled={isPending}
           id="fullName"
           {...register("fullName", {
             required: "This field is required",
-            disabled: isPending,
           })}
         />
       </FormRow>
@@ -35,10 +35,10 @@ function SignupForm() {
       <FormRow label="Email address" error={errors?.email?.message}>
         <Input
           type="email"
+          disabled={isPending}
           id="email"
           {...register("email", {
             required: "This field is required",
-            disabled: isPending,
             pattern: {
               value: /\S+@\S+\.\S+/,
               message: "Please enter a valid email address",
@@ -54,9 +54,9 @@ function SignupForm() {
         <Input
           type="password"
           id="password"
+          disabled={isPending}
           {...register("password", {
             required: "This field is required",
-            disabled: isPending,
             minLength: {
               value: 8,
               message: "Password must be at least 8 characters long",
@@ -68,10 +68,11 @@ function SignupForm() {
       <FormRow label="Repeat password" error={errors?.passwordConfirm?.message}>
         <Input
           type="password"
+          disabled={isPending}
           id="passwordConfirm"
           {...register("passwordConfirm", {
             required: "This field is required",
-            disabled: isPending,
+
             validate: (value) =>
               value === getValues().password || "Passwords do not match",
           })}
