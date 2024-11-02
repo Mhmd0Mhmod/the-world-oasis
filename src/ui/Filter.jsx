@@ -39,6 +39,7 @@ function Filter({ filterField, options }) {
   const currentValue = seacrhParams.get(filterField) || options[0].value;
   function handleClick(value) {
     seacrhParams.set(filterField, value);
+    if (seacrhParams.get("page")) seacrhParams.set("page", 1);
     setSearchParams(seacrhParams);
   }
   return (
