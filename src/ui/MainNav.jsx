@@ -7,6 +7,7 @@ import {
   HiOutlineHomeModern,
   HiOutlineUser,
 } from "react-icons/hi2";
+import Uploader from "../data/Uploader.jsx";
 const NavList = styled.ul`
   display: flex;
   flex-direction: column;
@@ -84,6 +85,9 @@ function MainNav() {
             <HiOutlineCog6Tooth />
             <span>Settings</span>
           </StyledNavLink>
+        </li>
+        <li>
+          <Uploader />
         </li>
       </NavList>
     </nav>

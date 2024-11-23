@@ -10,6 +10,7 @@
       "source": "/old-route",
       "destination": "/new-route",
       "permanent": true
+      
     },
     {
       "source": "/another-old-route",
